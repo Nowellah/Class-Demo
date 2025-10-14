@@ -1,1 +1,17 @@
-Hello!
+# Name of the workflow
+name: Hello Workflow
+
+# workflow trigger
+on: 
+    push: 
+        branches: [ test ]
+    
+jobs: 
+    say-hello: 
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: print hello
+              run: echo "hello"  
+
+
