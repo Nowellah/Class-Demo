@@ -1,0 +1,16 @@
+#name of the workflow
+name: windows-test-workflow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  say-hi:
+   runs-on: Windows-latest
+
+   steps:
+    - name: Bridget
+      run: echo "Bridget Nowellah"
+
+   
