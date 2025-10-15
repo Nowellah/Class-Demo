@@ -1,0 +1,30 @@
+name: test-django-workflow
+
+#trigger
+on:
+    push:
+        branches: [ main ]
+
+jobs:
+    test:
+        runs-on: ubuntu-latest #preferred server
+        strategy:
+            matrix:
+                python-version: [ 3.12 ] #specify the version you want
+
+        steps:
+            - name: checkout code
+              uses: actions/checkout@v5
+
+            - name: setup python
+              uses: actions/setup-python@v6
+              with:
+               python-version: ${[matrix.python-version]}
+
+            - name: install dependencies
+              run: |
+                python -m pip install --upgrade pip
+                pip install -r requirements.txt
+
+            - name: run tests
+              run: python manage.py test
